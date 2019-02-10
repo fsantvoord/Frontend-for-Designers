@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+li {
+    border: solid .5em;
+    display: grid;
+    width: 30em;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    cursor: move;
+}
+
+
+li > p {
+    grid-column: 1 / 1;
+    grid-row: 2 / 2;
+}
+
+li > img {
+    width: 100%;
+    grid-row: 1 / 3;
+}
+*/
+
+ul.moveable {
+    list-style: none;
+    margin: 0;
+}
+
+ul.moveable li {
+    list-style-image: none;
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 4px;
+    color: #666;
+    cursor: move;
+}
+
+ul.moveable li:hover{
+    background-color: #eee;
+}
