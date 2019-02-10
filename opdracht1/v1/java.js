@@ -19,7 +19,7 @@ var
         }
     },
 
-    dropped = function (e) {
+    dropped = function(e) {
         cancel(e);
 
         var oldIndex;
@@ -27,6 +27,10 @@ var
         if (isDnDTypesSupported) {
             oldIndex =
                 e.dataTransfer.getData('text/plain');
+        }
+        else {
+            oldIndex =
+                e.dataTransfer.getData('Text');
         }
 
         var
@@ -46,7 +50,7 @@ var
         }
     },
 
-    cancel = function (e) {
+    cancel = function(e) {
         if (e.preventDefault) {
             e.preventDefault();
         }
