@@ -1,86 +1,75 @@
-var isDnDTypesSupported = true;
+var dragSrcEl = null;
 
-var
-    dragStart = function(e) {
-        var index = $(e.target).index();
+function handleDragStart(e) {
+  // Target (this) element is the source node.
+  dragSrcEl = this;
 
-        index + -'';
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', this.outerHTML);
 
-        try {
+  this.classList.add('dragElem');
+}
+function handleDragOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault(); // Necessary. Allows us to drop.
+  }
+  this.classList.add('over');
 
-            e.dataTransfer
-                .setData('text/plain', index);
+  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
 
-        } catch (ex) {
-            e.dataTransfer
-                .setData('Text', index);
+  return false;
+}
 
-            isDnDTypesSupported = false;
-        }
-    },
+function handleDragEnter(e) {
+  // this / e.target is the current hover target.
+}
 
-    dropped = function(e) {
-        cancel(e);
+function handleDragLeave(e) {
+  this.classList.remove('over');  // this / e.target is previous target element.
+}
 
-        var oldIndex;
+function handleDrop(e) {
+  // this/e.target is current target element.
 
-        if (isDnDTypesSupported) {
-            oldIndex =
-                e.dataTransfer.getData('text/plain');
-        }
-        else {
-            oldIndex =
-                e.dataTransfer.getData('Text');
-        }
+  if (e.stopPropagation) {
+    e.stopPropagation(); // Stops some browsers from redirecting.
+  }
 
-        var
-            target = $(e.target),
-            newIndex = target.index(),
-            dropped = $(this)
-            .parent()
-            .children()
-            .eq(oldIndex);
+  // Don't do anything if dropping the same column we're dragging.
+  if (dragSrcEl != this) {
+    // Set the source column's HTML to the HTML of the column we dropped on.
+    //alert(this.outerHTML);
+    //dragSrcEl.innerHTML = this.innerHTML;
+    //this.innerHTML = e.dataTransfer.getData('text/html');
+    this.parentNode.removeChild(dragSrcEl);
+    var dropHTML = e.dataTransfer.getData('text/html');
+    this.insertAdjacentHTML('beforebegin',dropHTML);
+    var dropElem = this.previousSibling;
+    addDnDHandlers(dropElem);
 
-        dropped.remove();
+  }
+  this.classList.remove('over');
+  return false;
+}
 
-        if (newIndex < oldIndex) {
-            target.before(dropped);
-        } else {
-            target.after(dropped);
-        }
-    },
+function handleDragEnd(e) {
+  // this/e.target is the source node.
+  this.classList.remove('over');
 
-    cancel = function(e) {
-        if (e.preventDefault) {
-            e.preventDefault();
-        }
+  /*[].forEach.call(cols, function (col) {
+    col.classList.remove('over');
+  });*/
+}
 
-        if (e.stopPropagation) {
-            e.stopPropagation();
-        }
+function addDnDHandlers(elem) {
+  elem.addEventListener('dragstart', handleDragStart, false);
+  elem.addEventListener('dragenter', handleDragEnter, false)
+  elem.addEventListener('dragover', handleDragOver, false);
+  elem.addEventListener('dragleave', handleDragLeave, false);
+  elem.addEventListener('drop', handleDrop, false);
+  elem.addEventListener('dragend', handleDragEnd, false);
 
-        return false;
-    },
+}
 
-    forEach = Array.prototype.forEach;
-
-var items =
-    document.querySelectorAll('#items-list > li');
-
-forEach.call(items, function (item) {
-    $(item).prop('draggable', true);
-
-    item.addEventListener('dragstart',
-        dragStart, false);
-
-    item.addEventListener('drop',
-        dropped, false);
-
-    item.addEventListener('dragenter',
-        cancel, false);
-
-    item.addEventListener('dragover',
-        cancel, false);
-
-
-});
+var cols = document.querySelectorAll('#columns .column');
+[].forEach.call(cols, addDnDHandlers);
