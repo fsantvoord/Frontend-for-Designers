@@ -97,6 +97,18 @@ img {
 #banner {
     font-family: fantasy;
     color: blue;
-    display: block;
+    position: absolute;
+    right: 12em;
+    top: 25em;
+    transform: rotate(20deg)
+}
+
+#arrow {
+    width: 30em;
+    position: absolute;
+    right: 7em;
+    top: 20em;
+
+
 }
 
