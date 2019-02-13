@@ -73,3 +73,5 @@ function addDnDHandlers(elem) {
 
 var cols = document.querySelectorAll('#columns .column');
 [].forEach.call(cols, addDnDHandlers);
+
+
