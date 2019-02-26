@@ -132,7 +132,7 @@ footer {
     border-radius: 40em 40em 0em 0em;
 }
 
-footer img {
+footer img:first-of-type {
     width: 50em;
     display: block;
     margin-left: auto;
@@ -141,11 +141,17 @@ footer img {
 }
 
 footer button {
-        background: url(img/playpause.png);
+    background: url(img/playpause.png);
     background-repeat: no-repeat;
     background-size: 5em;
-    width: 5em;
-    display: block;
-    margin-left: 20em;
-    height: 3em;
+    position: absolute;
+    margin-left: 30em;
+    margin-top: -4.3em;
+}
+footer>div {
+    margin-left: 70em;
+    margin-top: -5em;
+}
+footer>div>img {
+    width: 4em;
 }
