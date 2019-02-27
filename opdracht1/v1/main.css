@@ -152,7 +152,12 @@ footer>div {
     margin-left: 70em;
     margin-top: -5em;
 }
-footer>img:last-of-type {
+
+footer p {
+    margin-left: 14.5em;
+}
+#cover {
     width: 4em;
     margin: auto;
+    margin-top: 1em;
 }

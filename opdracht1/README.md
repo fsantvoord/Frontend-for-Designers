@@ -14,13 +14,8 @@ De nummers in de afspeellijst heb ik in een grid geplaatst zodat ik ze goed, en 
 
 In de reces heb ik play-pause buttons toegevoegd aan de nummers (niet functioneel) Ook heb ik een play-bar als footer in de HTML toegevoegd zodat het 'afspeellijst' idee meer naar voren komt.
 
+De afspeellijst zijn dragfunctie is het enige échte functionele element. Ik ben tevreden met het resultaat, echter zou ik achteraf een gemakkelijkere opdracht gekozen hebben zodat ik wat meer basis-Javascript zou leren. Dit ga ik nu naar opdracht 2 halen, zodat ik daar wat meer van leer.
 
 
 
 [Opdracht 1] https://fsantvoord.github.io/Frontend-for-Designers/opdracht1/v1/index.html
-
-
-
-Feedback
-
-Kritische houding op de opdracht, en op jezelf
