@@ -107,7 +107,7 @@ body img {
 }
 
 #banner {
-    font-family: fantasy;
+    font-family: sans-serif;
     color: blue;
     position: absolute;
     right: 12em;
@@ -152,6 +152,7 @@ footer>div {
     margin-left: 70em;
     margin-top: -5em;
 }
-footer>div>img {
+footer>img:last-of-type {
     width: 4em;
+    margin: auto;
 }

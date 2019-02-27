@@ -1,7 +1,7 @@
 var dragSrcEl = null;
 
 function handleDragStart(e) {
-  // Target (this) element is the source node.
+  // Target (this) element is de source node.
   dragSrcEl = this;
 
   e.dataTransfer.effectAllowed = 'move';
@@ -11,7 +11,7 @@ function handleDragStart(e) {
 }
 function handleDragOver(e) {
   if (e.preventDefault) {
-    e.preventDefault(); // Necessary. Allows us to drop.
+    e.preventDefault(); // Drop-functie
   }
   this.classList.add('over');
 
@@ -56,9 +56,6 @@ function handleDragEnd(e) {
   // this/e.target is the source node.
   this.classList.remove('over');
 
-  /*[].forEach.call(cols, function (col) {
-    col.classList.remove('over');
-  });*/
 }
 
 function addDnDHandlers(elem) {
