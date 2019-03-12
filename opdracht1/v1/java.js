@@ -31,16 +31,8 @@ function handleDragLeave(e) {
 function handleDrop(e) {
   // this/e.target is current target element.
 
-  if (e.stopPropagation) {
-    e.stopPropagation(); // Stops some browsers from redirecting.
-  }
-
-  // Don't do anything if dropping the same column we're dragging.
   if (dragSrcEl != this) {
-    // Set the source column's HTML to the HTML of the column we dropped on.
-    //alert(this.outerHTML);
-    //dragSrcEl.innerHTML = this.innerHTML;
-    //this.innerHTML = e.dataTransfer.getData('text/html');
+    // Bepaal de source column's HTML naar de HTML van de column waar die is gedropt.
     this.parentNode.removeChild(dragSrcEl);
     var dropHTML = e.dataTransfer.getData('text/html');
     this.insertAdjacentHTML('beforebegin',dropHTML);
@@ -53,7 +45,7 @@ function handleDrop(e) {
 }
 
 function handleDragEnd(e) {
-  // this/e.target is the source node.
+  // this/e.target is de source node.
   this.classList.remove('over');
 
 }
