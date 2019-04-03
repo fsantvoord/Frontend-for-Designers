@@ -10,12 +10,33 @@ request.open('GET', requestURL);
 request.responseType = 'json';
 request.send();
 
+
 request.onload = function() {
     var weer = request.response;
     invullenHeader(weer);
 //    showWind(weer);
 }
 //console.log(data);
+
+//knop.forEach(function (downButtons) {
+//    knop.addEventListener("click", function () {
+//        knop.classList.toggle('laden');
+//        knop.classList.toggle('klaar');
+//    });
+//});
+
+    knop.addEventListener("click", function(){
+        var loadscreen =document.querySelector(".loadingscreen");
+        console.log(loadscreen);
+        loadscreen.classList.toggle('loadingscreen');
+        loadscreen.classList.toggle('loading');
+        setTimeout(Replay, 7000);
+        function Replay() {
+            loadscreen.classList.toggle('loading');
+            loadscreen.classList.toggle('loadingscreen');
+        }
+});
+
 
 function invullenHeader(jsonObj) {
     var showContent = document.getElementById('showcontent');
@@ -30,8 +51,14 @@ function invullenHeader(jsonObj) {
     myPara.textContent = 'Description: ' + weather[0].description;
     showContent.appendChild(myPara);
     console.log(wind.speed);
+
     knop.addEventListener('click', function() {
     showContent.style.visibility='visible';
+    knop.style.visibility='hidden';
+
+
+
+
 
 
 
