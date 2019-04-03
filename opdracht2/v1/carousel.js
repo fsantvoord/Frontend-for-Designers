@@ -32,7 +32,7 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
     }
 
 // when I click left, move slides to the left
-prevButton.addEventListener('d', e => {
+prevButton.addEventListener('click', e => {
     const currentSlide = track.querySelector('.current-slide');
     const prevSlide = currentSlide.previousElementSibling;
     const currentDot = dotsNav.querySelector('.current-slide');
@@ -44,7 +44,7 @@ prevButton.addEventListener('d', e => {
 });
 
 // when I click right, move slides to the right
-nextButton.addEventListener('a', e => {
+nextButton.addEventListener('click', e => {
     const currentSlide = track.querySelector('.current-slide');
     const nextSlide = currentSlide.nextElementSibling;
     const currentDot = dotsNav.querySelector('.current-slide');
